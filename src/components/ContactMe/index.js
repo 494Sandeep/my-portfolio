@@ -42,19 +42,15 @@ const ContactMe = ({ data }) => {
           validationSchema={ContactMeSchema}
           onSubmit={async (values, { resetForm, setSubmitting }) => {
             try {
-              const response = await fetch(
-                "https://formsubmit.co/494sandeep@gmail.com",
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    ...values,
-                  }),
-                }
-              );
-              const result = await response.json();
+              await fetch("https://formsubmit.co/494sandeep@gmail.com", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  ...values,
+                }),
+              });
               resetForm({
                 name: "",
                 _subject: "New submission!",
