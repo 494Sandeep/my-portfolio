@@ -1,0 +1,121 @@
+{
+  "banner": {
+    "title": "Hi, I'am Sandeep",
+    "position": "Senior Software Developer",
+    "description":
+      "High level experience in web design and development knowledge, producing quality work."
+  },
+  "aboutMe": {
+    "aboutMe":
+      "Web developer, with extensive knowledge and years of experience, working in web technologies and Ui / Ux design, delivering quality work.",
+    "aboutMeDetails": [
+      { "title": "05+", "description": "Years experience" },
+      { "title": "10", "description": "Completed project" },
+      { "title": "03", "description": "Companies worked" }
+    ]
+  },
+  "skills": [
+    {
+      "icon": "uil-brackets-curly",
+      "skillName": "Frontend developer",
+      "experience": "More than 5 years",
+      "languages": [
+        { "name": "HTML", "percentage": 90 },
+        { "name": "SCSS", "percentage": 80 },
+        { "name": "JavaScript", "percentage": 70 },
+        { "name": "React", "percentage": 90 }
+      ]
+    },
+    {
+      "icon": "uil-server-network",
+      "skillName": "Backend developer",
+      "experience": "More than 1 years",
+      "languages": [
+        { "name": "Scala", "percentage": 70 },
+        { "name": "HBASE", "percentage": 75 }
+      ]
+    }
+  ],
+  "qualification": {
+    "workHistory": [
+      {
+        "companyName": "Tookitaki Technologies Pvt. Ltd.",
+        "role": "Senior Software Engineer",
+        "location": "Bengaluru",
+        "duration": "May 2021 - Present",
+        "keyPoints": [
+          "Facilitated Scrum framework – sprint planning, backlog grooming, daily scrums, sprint reviews, and sprint retrospectives.",
+          "Reviewed code, debugged problems, and corrected issues.",
+          "Checking Production level critical issue, debugging and find the root cause.",
+          "Effectively support Backend in creating new api's and debugging issue in scala."
+        ]
+      },
+      {
+        "companyName": "Newgen Software",
+        "role": "Senior Software Engineer (Consultant)",
+        "location": "Noida",
+        "duration": "Dec 2020 - May 2021",
+        "keyPoints": [
+          "Designing full functional based generic components that can be used in other projects as well.",
+          "Handling and Guiding Teams for optimize output.",
+          "Doing POC and handling critical tasks (React Framework level)."
+        ]
+      },
+      {
+        "companyName": "Vmkosha Technology Pvt. Ltd",
+        "role": "Associate Software Engineer",
+        "location": "Bengaluru",
+        "duration": "May 2018 - Dec 2020",
+        "keyPoints": [
+          "Teamed with business analysts to deliver high-availability solutions for mission-critical applications.",
+          "Responsible for development and maintenance of 100+ reusable React JS component.",
+          "Architected frontend, Created reducers, data retrieval mechanisms.",
+          "Responsible for state management (Redux based) of our application.",
+          "Responsible for creating a custom component like (Graphs, Barcode Scanner, Business Card Scanner, Drag-n-drop form fields and many more.)",
+          "Responsible for creating custom role based authentication and generic component."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor of Engineering (Information Technology)",
+        "collage": "Mahakal Institute of Technology, Ujjain",
+        "duration": "Aug 2013 - Jun 2017"
+      },
+      {
+        "degree": "Kendriya Vidyalaya Dewas (12)",
+        "collage": "Mathematics and Computer Science",
+        "duration": "Apr 2012 - Mar 2013"
+      }
+    ]
+  },
+  "projectInMind": {
+    "title": "You have a new project",
+    "description": "Contact me now and get a 30% discount on your new project."
+  },
+  "contactMe": [
+    {
+      "icon": "uil-phone-alt",
+      "text": "Call Me",
+      "value": "+91-7899197957",
+      "href": "tel:+91-7899197957"
+    },
+    {
+      "icon": "uil-envelope",
+      "text": "Email",
+      "value": "sandeepdimaniya@gmail.com",
+      "href": "mailto:sandeepdimaniya@gmail.com"
+    },
+    {
+      "icon": "uil-map-marker",
+      "text": "Location",
+      "value": "Noida - India",
+      "href": "#contact"
+    }
+  ],
+  "footer": {
+    "name": "Sandeep Singh",
+    "position": "Senior Software Developer",
+    "copyRight": "Sandeep Singh"
+  }
+}
