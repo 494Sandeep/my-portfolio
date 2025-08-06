@@ -9,8 +9,8 @@
     "aboutMe":
       "Web developer, with extensive knowledge and years of experience, working in web technologies and Ui / Ux design, delivering quality work.",
     "aboutMeDetails": [
-      { "title": "05+", "description": "Years experience" },
-      { "title": "10", "description": "Completed project" },
+      { "title": "07+", "description": "Years experience" },
+      { "title": "15+", "description": "Completed project" },
       { "title": "03", "description": "Companies worked" }
     ]
   },
@@ -18,24 +18,18 @@
     {
       "icon": "uil-brackets-curly",
       "skillName": "Frontend developer",
-      "experience": "More than 5 years",
+      "experience": "More than 7 years",
       "languages": [
-        { "name": "HTML", "percentage": 90 },
-        { "name": "SCSS", "percentage": 80 },
-        { "name": "JavaScript", "percentage": 70 },
-        { "name": "React", "percentage": 90 }
+        { "name": "HTML", "percentage": 95 },
+        { "name": "SCSS", "percentage": 95 },
+        { "name": "JavaScript", "percentage": 90 },
+        { "name": "React", "percentage": 95 },
+        { "name": "Typescipt", "percentage": 85 },
+        { "name": "NextJS", "percentage": 85 },
+        { "name": "Redux", "percentage": 85 }
       ]
-    },
-    {
-      "icon": "uil-server-network",
-      "skillName": "Backend developer",
-      "experience": "More than 1 years",
-      "languages": [
-        { "name": "Scala", "percentage": 70 },
-        { "name": "HBASE", "percentage": 75 }
-      ]
-    }
-  ],
+    } 
+   ],
   "qualification": {
     "workHistory": [
       {
@@ -44,10 +38,16 @@
         "location": "Bengaluru",
         "duration": "May 2021 - Present",
         "keyPoints": [
-          "Facilitated Scrum framework – sprint planning, backlog grooming, daily scrums, sprint reviews, and sprint retrospectives.",
-          "Reviewed code, debugged problems, and corrected issues.",
-          "Checking Production level critical issue, debugging and find the root cause.",
-          "Effectively support Backend in creating new api's and debugging issue in scala."
+          "Created an LLM-based AI copilot to assist investigators in progressing alert investigations, enabling faster insight generation and improved analyst productivity.",
+          "Reduced page load time by 40% through strategic bundle and code optimization.",
+          "Enabled internationalization and localization by implementing multilingual support and user-configurable global UI settings empowering users to personalize static content on the go.",
+          "Maintained high code quality standards through unit and integration testing using Jest and React Testing Library.",
+          "Developed accessible, responsive, and well-tested UI components using CSS-in-JS (Emotion) and Tailwind.",
+          "Designed and implemented efficient state management patterns using Context API and Redux to streamline data flow",
+          "Collaborated with DevOps to maintain CI/CD pipelines using GitLab CI and Docker for seamless frontend deployment.",
+          "Integrated RESTful and GraphQL APIs into frontend components, improving system communication, flexibility, and reliability.",
+          "Conducted sprint planning, daily stand-ups, sprint reviews, and retrospectives to drive collaboration and timely deliverables.",
+          "Worked cross-functionally with backend engineers, UX designers, and product managers to deliver high-quality features."
         ]
       },
       {
@@ -67,12 +67,12 @@
         "location": "Bengaluru",
         "duration": "May 2018 - Dec 2020",
         "keyPoints": [
-          "Teamed with business analysts to deliver high-availability solutions for mission-critical applications.",
-          "Responsible for development and maintenance of 100+ reusable React JS component.",
-          "Architected frontend, Created reducers, data retrieval mechanisms.",
-          "Responsible for state management (Redux based) of our application.",
-          "Responsible for creating a custom component like (Graphs, Barcode Scanner, Business Card Scanner, Drag-n-drop form fields and many more.)",
-          "Responsible for creating custom role based authentication and generic component."
+          "Implemented role-based authentication and dynamic UI components.",
+          "Built and maintained production-grade applications using Next.js and TypeScript, leveraging SSR and SSG for performance and SEO optimization.",
+          "Created 50+ reusable components, ensuring consistency and reducing duplication.",
+          "Designed Redux-based state management, reducers, and frontend architecture.",
+          "Developed custom form inputs, graph components, and various UI utilities.",
+          "Collaborated with cross-functional teams to deliver high-availability frontend solutions."
         ]
       }
     ],
@@ -103,8 +103,8 @@
     {
       "icon": "uil-envelope",
       "text": "Email",
-      "value": "sandeepdimaniya@gmail.com",
-      "href": "mailto:sandeepdimaniya@gmail.com"
+      "value": "494sandeep@gmail.com",
+      "href": "mailto:494sandeep@gmail.com"
     },
     {
       "icon": "uil-map-marker",

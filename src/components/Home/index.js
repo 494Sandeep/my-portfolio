@@ -8,7 +8,7 @@ const Home = ({ data }) => {
         <div className="home__content grid">
           <div className="home__social">
             <a
-              href="https://www.linkedin.com/in/sandeep-singh-1240bb13b"
+              href="https://www.linkedin.com/in/sandeep-singh-frontend/"
               target="_blank"
               rel="noreferrer"
               className="home__social-icon"
