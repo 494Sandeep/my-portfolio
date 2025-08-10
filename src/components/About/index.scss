@@ -1,24 +1,19 @@
 /*==================== ABOUT ====================*/
 .about {
   position: relative;
-  &__data{
+
+  &__data {
     position: relative;
+
     .pulse-ring {
       &__1 {
         width: 100px;
         height: 100px;
-        bottom: 30%;
+        bottom: 25%;
         left: 20%;
       }
     }
   }
-}
-
-.about__img {
-  width: 200px;
-  border-radius: 0.5rem;
-  margin: 0 auto;
-  align-self: center;
 }
 
 .about__description {
@@ -49,7 +44,7 @@
 
 .about__buttons {
   display: inline-flex;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .my-blob {
@@ -64,6 +59,15 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
+
+  & .about__img {
+    position: absolute;
+    top: -6%;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+    align-self: center;
+  }
 }
 
 .morphing-blob {
@@ -190,5 +194,34 @@
 @keyframes pulse {
   50% {
     opacity: 0.5;
+  }
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 3rem;
+
+  .badge {
+    padding: 6px 10px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    &.purple {
+      background-color: #f3e8ff;
+      color: #6b21a8;
+    }
+
+    &.blue {
+      background-color: #dbeafe;
+      color: #1e40af;
+    }
+
+    &.green {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
   }
 }

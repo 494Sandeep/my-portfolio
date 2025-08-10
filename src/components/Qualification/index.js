@@ -55,7 +55,7 @@ const Qualification = ({ data }) => {
                       <i className="uil uil-calendar-alt"></i>
                       {item.duration}
                     </div>
-                    <div>
+                    <div className="qualification__keypoints-container">
                       {item.keyPoints.map((keyPoint, keyPointIndex) => (
                         <div
                           className="qualification__keypoint-content"

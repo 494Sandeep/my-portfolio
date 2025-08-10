@@ -69,6 +69,10 @@
     transform: translate(6px, -7px);
   }
 
+  &__keypoints-container {
+    display: visible;
+  }
+
   &__keypoint {
     &-content {
       display: grid;

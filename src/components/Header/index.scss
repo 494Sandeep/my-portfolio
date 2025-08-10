@@ -23,6 +23,7 @@
   .nav__toggle {
     color: var(--title-color);
     font-weight: var(--font-medium);
+
     :hover {
       color: var(--first-color);
     }
@@ -38,15 +39,35 @@
     gap: 2rem;
 
     .nav__link {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: var(--normal-font-size);
-      color: var(--title-color);
-      font-weight: var(--font-medium);
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 8px;
+      overflow: hidden;
 
-      :hover {
-        color: var(--first-color);
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: 0;
+        left: 50%;
+        background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+        background-size: 200% 100%;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(-50%);
+        border-radius: 1px;
+        animation: gradient-shift 2s ease infinite;
+      }
+
+      &:hover {
+        color: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+        transform: translateY(-2px);
+
+        &::after {
+          width: 100%;
+          box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
       }
 
       .nav__icon {
@@ -62,6 +83,7 @@
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--first-color);
+
     :hover {
       color: var(--first-color-alt);
     }
@@ -73,12 +95,23 @@
 }
 
 @media screen and (max-width: 767px) {
+  
+  .header {
+    background: var(--linear-gradient);
+    color: #FFF;
+
+    .nav__logo,
+    .nav__toggle {
+      color: #FFF;
+    }
+  }
+
   .nav__menu {
     position: fixed;
-    bottom: -100%;
+    bottom: -195px;
     left: 0;
     width: 100%;
-    background-color: var(--body-color);
+    background: var(--linear-gradient);
     padding: 2rem 1.5rem 4rem;
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
     border-radius: 1.5rem 1.5rem 0 0;
@@ -86,6 +119,22 @@
   }
 
   .show-menu {
-    bottom: 0;
+    bottom: 68px;
+
+    .nav__link {
+      color: inherit;
+    }
+  }
+}
+
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
   }
 }

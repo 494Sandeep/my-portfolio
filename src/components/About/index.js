@@ -25,14 +25,9 @@ const About = ({ data }) => {
       <span className="section__subtitle">My introduction</span>
 
       <div className="about__container container grid">
-        {/* <img
-          src={require("../../assets/img/about_img.jpg")}
-          alt="Sandeep_about"
-          className="about__img"
-        /> */}
         <div className="about__blob effects-container">
           <div className="my-blob morphing-blob">
-            <div className="text-8xl relative z-10">👨‍💻</div>
+            <img src={require("../../assets/img/sandeep_photo-removebg-preview.png")} alt="Sandeep_about" className="about__img" />
             {/* <!-- Floating elements inside blob --> */}
             <div className="dot-ping"></div>
             <div className="dot-bounce"></div>
@@ -46,7 +41,7 @@ const About = ({ data }) => {
           </div>
         </div>
         <div className="about__data">
-        <div className="pulse-ring pulse-ring__1"></div>
+          <div className="pulse-ring pulse-ring__1"></div>
           <p className="about__description">{data.aboutMe}</p>
           <div className="about__info">
             {data.aboutMeDetails.map((item, index) => {
@@ -60,6 +55,11 @@ const About = ({ data }) => {
                 </div>
               );
             })}
+          </div>
+          <div className="badges">
+            <span className="badge purple">Problem Solver</span>
+            <span className="badge blue">Team Player</span>
+            <span className="badge green">Continuous Learner</span>
           </div>
           <div className="about__buttons glass-button button button--flex">
             <a download="" href="pdf/Sandeep_Singh-Resume1.pdf">

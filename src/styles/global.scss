@@ -1,9 +1,9 @@
 /*==================== mixin ====================*/
 
 @mixin glass-drop-effect {
-  background: rgba(255, 255, 255, 0) !important;
-  backdrop-filter: blur(25px) !important;
-  -webkit-backdrop-filter: blur(25px) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
 }
 
 /*==================== GOOGLE FONTS ====================*/
@@ -247,7 +247,7 @@ img {
 
 /*==================== LAYOUT ====================*/
 .container {
-  max-width: 850px;
+  max-width: 1050px;
   margin-left: var(--mb-1-5);
   margin-right: var(--mb-1-5);
 }
@@ -451,7 +451,7 @@ img {
 }
 
 /* For medium devices */
-@media screen and (min-width: 568px) {
+@media screen and (max-width: 568px) {
   .home__content {
     grid-template-columns: max-content 2fr 0.5fr !important;
   }
@@ -465,16 +465,35 @@ img {
     justify-self: center;
   }
 
+  section.about {
+    padding: 2rem 1rem !important;
+  }
+
   .about__container,
   .contact__container,
   .footer__container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
-  .qualification__section {
-    display: grid;
-    grid-template-columns: 2fr;
-    justify-content: center;
+  .qualification {
+    &__section {
+      display: grid;
+      grid-template-columns: 2fr;
+      justify-content: center;
+    }
+
+    &__keypoints-container {
+      display: none;
+    }
+  }
+
+  .contact {
+    .pulse-ring.decoration-circle__1 {
+      width: 200px;
+      height: 200px;
+      left: 20%;
+      top: -40%;
+    }
   }
 }
 
@@ -486,6 +505,12 @@ img {
 
   body {
     margin: 0;
+  }
+
+  .about__container,
+  .contact__container,
+  .footer__container {
+    grid-template-columns: 2fr 3fr;
   }
 
   .section {
@@ -501,11 +526,6 @@ img {
     bottom: initial !important;
   }
 
-  // .header,
-  // .main,
-  // .footer__container {
-  //   padding: 0 1rem !important;
-  // }
   .nav {
     height: calc(var(--header-height) + 1.5rem) !important;
     column-gap: 1rem;

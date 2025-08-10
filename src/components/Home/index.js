@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.scss";
 
 const Home = ({ data }) => {
+
+  useEffect(() => {
+    const typingText = document.querySelector('.typing-animation');
+    let typingAnimation;
+    if (typingText) {
+      const text = data.name;
+      let index = 0;
+
+      function typeWriter() {
+        if (index < text.length) {
+          typingText.textContent = text.slice(0, index + 1);
+          index++;
+          setTimeout(typeWriter, 150);
+        }
+      }
+
+      typingAnimation = setTimeout(() => {
+        typingText.textContent = '';
+        typeWriter();
+      }, 1000);
+    }
+    return () => clearTimeout(typingAnimation);
+  }, [data.name]);
+
   return (
     <section className="home section" id="home">
       {/* Decorative circles */}
@@ -16,14 +40,14 @@ const Home = ({ data }) => {
         <div className="home__content">
           <div className="home__data">
             <h1 className="home__title glitch">
-              Hi, I'm 
-              <span className="text-gradient">{data.name}</span>
+              Hi, I'm
+              <span className="text-gradient typing-animation">{data.name}</span>
             </h1>
-            <h2 className="home__subtitle">{data.position}</h2>
+            <h2 className="home__subtitle typewriter">{data.position}</h2>
             <p className="home__description">
               {data.description}
             </p>
-            
+
             <div className="home__buttons">
               <a href="#qualification" className="button button--primary glass-button">
                 View My Work
@@ -34,7 +58,7 @@ const Home = ({ data }) => {
             </div>
           </div>
         </div>
-        
+
         <div className="home__scroll">
           <div className="home__scroll-indicator">
             <span className="home__scroll-text">Scroll Down</span>

@@ -72,11 +72,9 @@ const Header = () => {
               </a>
             </li>
           </ul>
-          <i
-            className="uil uil-times nav__close"
-            id="nav-close"
-            onClick={onCloseHandler}
-          ></i>
+        </div>
+        <div className="nav__toggle" id="nav-toggle">
+          <i className="uil uil-apps" onClick={onCloseHandler}></i>
         </div>
       </nav>
     </header>
