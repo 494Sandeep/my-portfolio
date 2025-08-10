@@ -1,52 +1,56 @@
-import React, { useState } from "react";
-import classnames from "classnames";
+import React from "react";
 import "./index.scss";
 
 const Skills = ({ data }) => {
-  const [showAccordian, setShowAccordian] = useState(0);
+  // Flatten all skills from all categories into a single array
+  const allSkills = data.reduce((acc, category) => {
+    return acc.concat(category.languages);
+  }, []);
+
+  // Define skill icons mapping
+  const skillIcons = {
+    'HTML': 'fab fa-html5',
+    'SCSS': 'fab fa-sass',
+    'JavaScript': 'fab fa-js-square',
+    'React': 'fab fa-react',
+    'Typescipt': 'fab fa-js-square', // Using JS icon for TypeScript
+    'NextJS': 'fab fa-react', // Using React icon for Next.js
+    'Redux': 'fab fa-react', // Using React icon for Redux
+    'CSS3': 'fab fa-css3-alt',
+    'Scss / Less': 'fab fa-sass',
+    'WordPress': 'fab fa-wordpress',
+    'React Js': 'fab fa-react',
+    'Bootstrap': 'fab fa-bootstrap',
+    'Tailwind CSS': 'fab fa-css3-alt',
+    'jQuery': 'fab fa-js-square',
+    'Chakra UI': 'fab fa-react',
+    'Netlify': 'fab fa-github',
+    'GIT': 'fab fa-git-alt'
+  };
 
   return (
     <section className="skills section" id="skills">
-      <h2 className="section__title">Skills</h2>
-      <span className="section__subtitle">My technical level</span>
-      <div className="skills__container container grid">
-        <div>
-          {data.map((item, index) => (
-            <div
-              className={classnames("skills__content", {
-                skills__open: showAccordian === index,
-                skills__close: !showAccordian !== index,
-              })}
-              key={index}
-            >
-              <div
-                className="skills__header"
-                onClick={() => setShowAccordian(index)}
-              >
-                <i className={`uil ${item.icon} skills__icon`}></i>
-                <div>
-                  <h1 className="skills__title">{item.skillName}</h1>
-                  <span className="skills__subtitle">{item.experience}</span>
+      <h2 className="section__title">My Skills</h2>
+      <span className="section__subtitle">
+        We transform your ideas into captivating web projects that inspire both you and your customers.
+      </span>
+
+      <div className="skills__container container">
+        <div className="pulse-ring pulse-ring__1"></div>
+        <div className="pulse-ring pulse-ring__2"></div>
+        {/* <div className="pulse-ring pulse-ring__3"></div> */}
+        <div className="skills__grid">
+          {allSkills.map((skill, index) => (
+            <div className="skill__card-container" key={index}>
+              <div className="skills__card">
+                <div className="skills__icon">
+                  {skill.svgIcon
+                    ? <div dangerouslySetInnerHTML={{ __html: skill.svgIcon }} />
+                    : <img src={require(`../../assets/img/${skill.img}`)} alt={skill.name} />
+                  }
                 </div>
-                <i className="uil uil-angle-down skills__arrow"></i>
-              </div>
-              <div className="skills__list grid">
-                {item.languages.map((language, languageIndex) => (
-                  <div className="skills__data" key={languageIndex}>
-                    <div className="skills__titles">
-                      <h3 className="skills__name">{language.name}</h3>
-                      <span className="skills__number">
-                        {language.percentage}%
-                      </span>
-                    </div>
-                    <div className="skills__bar">
-                      <span
-                        className="skills__percentage"
-                        style={{ width: `${language.percentage}%` }}
-                      ></span>
-                    </div>
-                  </div>
-                ))}
+                <div className="skills__percentage">{skill.percentage}%</div>
+                <div className="skills__name">{skill.name}</div>
               </div>
             </div>
           ))}

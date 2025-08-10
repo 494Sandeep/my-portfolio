@@ -14,8 +14,9 @@ const ProjectInMind = ({ data }) => {
               <i className="uil uil-message project__icon button__icon"></i>
             </a>
           </div>
+          {/* <div className="project__img"></div> */}
           <img
-            src={require("../../assets/img/new_project-removebg-preview.png")}
+            src={require("../../assets/img/project_at_work@2x.png")}
             alt=""
             className="project__img"
           />

@@ -14,23 +14,6 @@ const Header = () => {
     setShowNavMenu(false);
   };
 
-  const themeHanlder = ({ target }) => {
-    const { className } = target;
-
-    const themeButton = document.getElementById("theme-button");
-    const darkTheme = "dark-theme";
-
-    if (className.includes("uil-moon")) {
-      document.body.classList.add(darkTheme);
-      themeButton.classList.add("uil-sun");
-      themeButton.classList.remove("uil-moon");
-    } else {
-      document.body.classList.remove(darkTheme);
-      themeButton.classList.add("uil-moon");
-      themeButton.classList.remove("uil-sun");
-    }
-  };
-
   return (
     <header className="header" id="header">
       <nav className="nav conatiner">
@@ -94,16 +77,6 @@ const Header = () => {
             id="nav-close"
             onClick={onCloseHandler}
           ></i>
-        </div>
-        <div className="nav__btns">
-          <i
-            className="uil uil-moon change-theme"
-            id="theme-button"
-            onClick={themeHanlder}
-          ></i>
-          <div className="nav__toggle" id="nav-toggle">
-            <i className="uil uil-apps" onClick={onCloseHandler}></i>
-          </div>
         </div>
       </nav>
     </header>
