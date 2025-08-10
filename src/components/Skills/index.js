@@ -2,31 +2,9 @@ import React from "react";
 import "./index.scss";
 
 const Skills = ({ data }) => {
-  // Flatten all skills from all categories into a single array
   const allSkills = data.reduce((acc, category) => {
     return acc.concat(category.languages);
   }, []);
-
-  // Define skill icons mapping
-  const skillIcons = {
-    'HTML': 'fab fa-html5',
-    'SCSS': 'fab fa-sass',
-    'JavaScript': 'fab fa-js-square',
-    'React': 'fab fa-react',
-    'Typescipt': 'fab fa-js-square', // Using JS icon for TypeScript
-    'NextJS': 'fab fa-react', // Using React icon for Next.js
-    'Redux': 'fab fa-react', // Using React icon for Redux
-    'CSS3': 'fab fa-css3-alt',
-    'Scss / Less': 'fab fa-sass',
-    'WordPress': 'fab fa-wordpress',
-    'React Js': 'fab fa-react',
-    'Bootstrap': 'fab fa-bootstrap',
-    'Tailwind CSS': 'fab fa-css3-alt',
-    'jQuery': 'fab fa-js-square',
-    'Chakra UI': 'fab fa-react',
-    'Netlify': 'fab fa-github',
-    'GIT': 'fab fa-git-alt'
-  };
 
   return (
     <section className="skills section" id="skills">
