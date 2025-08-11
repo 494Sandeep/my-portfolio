@@ -68,6 +68,10 @@
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
+
+    &>h3 {
+      margin: 0 2rem 1rem;
+    }
   }
 
   &__content {
@@ -187,15 +191,15 @@
     &.decoration-circle__1 {
       width: 150px;
       height: 150px;
-      left: 20%;
-      top: -65%;
+      left: -15%;
+      top: -140%;
     }
 
     &.decoration-circle__2 {
       width: 200px;
       height: 200px;
-      top: -100%;
-      right: 40%;
+      top: -140%;
+      right: -30%;
     }
   }
 
@@ -263,6 +267,22 @@
     .section__subtitle {
       font-size: 1rem;
       margin-bottom: 2rem;
+    }
+
+    .pulse-ring {
+      &.decoration-circle__1 {
+        width: 150px;
+        height: 150px;
+        left: 20%;
+        top: -100%;
+      }
+
+      &.decoration-circle__2 {
+        width: 200px;
+        height: 200px;
+        top: -40%;
+        right: -10%;
+      }
     }
   }
 

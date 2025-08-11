@@ -2,8 +2,9 @@ import React from "react";
 import "./index.scss";
 
 export const ContactTile = ({ data }) => {
-  return <React.Fragment>
-    <h3>Get In Touch</h3>
+  return <div className="contact__info">
+    <div className="pulse-ring decoration-circle__1"></div>
+    <div className="pulse-ring decoration-circle__2"></div>
     {data.map((item, index) => (
       <div className="contact__information glass-contact-card" key={index}>
         <i className={`uil ${item.icon} contact__icon`}></i>
@@ -15,7 +16,7 @@ export const ContactTile = ({ data }) => {
         </div>
       </div>
     ))};
-  </React.Fragment>
+  </div>
 };
 
 export default ContactTile;

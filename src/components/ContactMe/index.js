@@ -28,12 +28,9 @@ const ContactMe = ({ data }) => {
       <span className="section__subtitle">I'm always interested in new opportunities and exciting projects. Let's discuss how we can bring your ideas to life!</span>
 
       <div className="contact__container container">
-        <div className="pulse-ring decoration-circle__1"></div>
-        <div className="pulse-ring decoration-circle__2"></div>
+        <h3>Get In Touch</h3>
         <div className="contact__content">
-          <div className="contact__info">
-            <ContactTile data={data} />
-          </div>
+          <ContactTile data={data} />
 
           <div className="contact__form-wrapper">
             <Formik
@@ -160,7 +157,7 @@ const ContactMe = ({ data }) => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

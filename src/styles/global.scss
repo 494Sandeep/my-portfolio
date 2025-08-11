@@ -465,6 +465,9 @@ img {
     justify-self: center;
   }
 
+  .section__subtitle{
+    padding: 0 1rem;
+  }
   section.about {
     padding: 2rem 1rem !important;
   }
@@ -519,6 +522,10 @@ img {
     &__subtitle {
       margin-bottom: 4rem;
     }
+  }
+
+  .qualification__container{
+    padding: 0 2rem;
   }
 
   .header {

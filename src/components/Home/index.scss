@@ -360,6 +360,12 @@
 @media screen and (max-width: 768px) {
   .home__container {
     padding: 0 1rem;
+    &.container{
+      margin: 0;
+    }
+  }
+  .home__content{
+    padding: 2rem 1rem;
   }
 
   .home__buttons {
