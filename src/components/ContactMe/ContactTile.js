@@ -15,7 +15,7 @@ export const ContactTile = ({ data }) => {
           </a>
         </div>
       </div>
-    ))};
+    ))}
   </div>
 };
 

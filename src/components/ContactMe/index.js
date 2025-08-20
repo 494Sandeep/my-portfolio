@@ -157,7 +157,7 @@ const ContactMe = ({ data }) => {
           </div>
         </div>
       </div>
-    </section >
+    </section>
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
+import { SVGSandeep } from "../SVG/Sandeep";
 
 import "./index.scss";
 
@@ -18,7 +19,7 @@ const Header = () => {
     <header className="header" id="header">
       <nav className="nav conatiner">
         <a href="#home" className="nav__logo">
-          Sandeep
+          <SVGSandeep />
         </a>
 
         <div

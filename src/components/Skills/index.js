@@ -16,7 +16,7 @@ const Skills = ({ data }) => {
       <div className="skills__container container">
         <div className="pulse-ring pulse-ring__1"></div>
         <div className="pulse-ring pulse-ring__2"></div>
-        {/* <div className="pulse-ring pulse-ring__3"></div> */}
+        <div className="pulse-ring pulse-ring__3"></div>
         <div className="skills__grid">
           {allSkills.map((skill, index) => (
             <div className="skill__card-container" key={index}>
@@ -27,7 +27,6 @@ const Skills = ({ data }) => {
                     : <img src={require(`../../assets/img/${skill.img}`)} alt={skill.name} />
                   }
                 </div>
-                <div className="skills__percentage">{skill.percentage}%</div>
                 <div className="skills__name">{skill.name}</div>
               </div>
             </div>

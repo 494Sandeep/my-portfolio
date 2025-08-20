@@ -21,11 +21,19 @@
 
   .nav__logo,
   .nav__toggle {
+    cursor: pointer;
     color: var(--title-color);
     font-weight: var(--font-medium);
 
     :hover {
       color: var(--first-color);
+    }
+
+    svg path {
+      fill: #7343cb;
+      stroke: #7343cb;
+      stroke-width: 0.1;
+      stroke-dasharray: 60;
     }
   }
 
