@@ -1,0 +1,2238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Chen - Frontend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .skill-bar {
+        transition: width 2s ease-in-out;
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .typing-animation {
+        border-right: 2px solid #667eea;
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          border-color: #667eea;
+        }
+        51%,
+        100% {
+          border-color: transparent;
+        }
+      }
+
+      .floating-particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0;
+        }
+        50% {
+          transform: translateY(-100px) rotate(180deg);
+          opacity: 1;
+        }
+      }
+
+      .glitch {
+        position: relative;
+        animation: glitch 2s infinite;
+      }
+
+      @keyframes glitch {
+        0%,
+        90%,
+        100% {
+          transform: translate(0);
+        }
+        20% {
+          transform: translate(-2px, 2px);
+        }
+        40% {
+          transform: translate(-2px, -2px);
+        }
+        60% {
+          transform: translate(2px, 2px);
+        }
+        80% {
+          transform: translate(2px, -2px);
+        }
+      }
+
+      .pulse-ring {
+        position: absolute;
+        border: 3px solid rgba(102, 126, 234, 0.3);
+        border-radius: 50%;
+        animation: pulse 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(0.33);
+          opacity: 1;
+        }
+        80%,
+        100% {
+          transform: scale(2.5);
+          opacity: 0;
+        }
+      }
+
+      .text-gradient {
+        background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradient-shift 3s ease infinite;
+      }
+
+      @keyframes gradient-shift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .morphing-blob {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        animation: morph 8s ease-in-out infinite;
+      }
+
+      @keyframes morph {
+        0% {
+          border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        50% {
+          border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        }
+        100% {
+          border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+      }
+
+      .tilt-card {
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
+      }
+
+      .parallax-bg {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .neon-glow {
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        animation: neon-pulse 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes neon-pulse {
+        from {
+          box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+        to {
+          box-shadow: 0 0 30px rgba(102, 126, 234, 0.8),
+            0 0 40px rgba(102, 126, 234, 0.6);
+        }
+      }
+
+      .typewriter {
+        overflow: hidden;
+        white-space: nowrap;
+        animation: typing 3.5s steps(40, end),
+          blink-caret 0.75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #667eea;
+        }
+      }
+
+      .scroll-indicator {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        40% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+
+      .nav-link {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: #667eea;
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .glass-dark {
+        background: rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      }
+
+      .glass-contact-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.6),
+          0 0 20px rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .glass-contact-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.15),
+          transparent
+        );
+        transition: left 0.6s;
+      }
+
+      .glass-contact-card:hover::before {
+        left: 100%;
+      }
+
+      .glass-contact-card:hover {
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 16px 50px 0 rgba(31, 38, 135, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.7),
+          0 0 30px rgba(255, 255, 255, 0.2);
+      }
+
+      .glass-icon {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 8px 25px 0 rgba(31, 38, 135, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      }
+
+      .glass-contact-form {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        box-shadow: 0 15px 45px 0 rgba(31, 38, 135, 0.25),
+          inset 0 1px 0 rgba(255, 255, 255, 0.5),
+          0 0 25px rgba(255, 255, 255, 0.08);
+      }
+
+      .glass-contact-form::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.6),
+          transparent
+        );
+      }
+
+      .google-field {
+        transition: all 0.3s ease;
+      }
+
+      .google-field:focus {
+        border-bottom-width: 2px;
+        padding-bottom: 11px;
+      }
+
+      .google-label {
+        pointer-events: none;
+        transform-origin: left top;
+      }
+
+      .google-field:focus + .google-label,
+      .google-field:not(:placeholder-shown) + .google-label {
+        transform: translateY(-1.5rem) scale(0.85);
+        color: #7c3aed;
+      }
+
+      .google-field-container::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #7c3aed, #a855f7);
+        transition: width 0.3s ease;
+      }
+
+      .google-field:focus ~ .google-field-container::after,
+      .google-field-container:focus-within::after {
+        width: 100%;
+      }
+
+      .moving-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        opacity: 0.6;
+      }
+
+      .floating-shape {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(40px);
+        animation: float-shape 20s ease-in-out infinite;
+      }
+
+      @keyframes float-shape {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-100px) translateX(50px) rotate(90deg);
+        }
+        50% {
+          transform: translateY(-50px) translateX(-50px) rotate(180deg);
+        }
+        75% {
+          transform: translateY(50px) translateX(100px) rotate(270deg);
+        }
+      }
+
+      .wave-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          rgba(102, 126, 234, 0.1) 0%,
+          rgba(118, 75, 162, 0.1) 25%,
+          rgba(240, 147, 251, 0.1) 50%,
+          rgba(102, 126, 234, 0.1) 75%,
+          rgba(118, 75, 162, 0.1) 100%
+        );
+        background-size: 400% 400%;
+        animation: wave-motion 15s ease infinite;
+      }
+
+      @keyframes wave-motion {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .glass-button {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37),
+          inset 0 1px 0 rgba(255, 255, 255, 0.5),
+          0 0 20px rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .glass-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .glass-button:hover::before {
+        left: 100%;
+      }
+
+      .glass-button:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.6),
+          0 0 30px rgba(255, 255, 255, 0.2);
+      }
+
+      .parallax-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      .geometric-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            circle at 25% 25%,
+            rgba(102, 126, 234, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 75% 75%,
+            rgba(240, 147, 251, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 50% 10%,
+            rgba(118, 75, 162, 0.1) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 10% 80%,
+            rgba(255, 182, 193, 0.1) 0%,
+            transparent 40%
+          ),
+          linear-gradient(
+            45deg,
+            transparent 40%,
+            rgba(118, 75, 162, 0.08) 50%,
+            transparent 60%
+          ),
+          linear-gradient(
+            -45deg,
+            transparent 40%,
+            rgba(102, 126, 234, 0.08) 50%,
+            transparent 60%
+          ),
+          linear-gradient(
+            135deg,
+            transparent 30%,
+            rgba(240, 147, 251, 0.06) 50%,
+            transparent 70%
+          );
+        background-size: 500px 500px, 400px 400px, 350px 350px, 300px 300px,
+          250px 250px, 200px 200px, 180px 180px;
+        animation: pattern-move 40s ease-in-out infinite;
+      }
+
+      @keyframes pattern-move {
+        0%,
+        100% {
+          background-position: 0% 0%, 100% 100%, 50% 0%, 0% 100%, 0% 100%,
+            100% 0%, 50% 50%;
+          transform: rotate(0deg) scale(1);
+        }
+        25% {
+          background-position: 100% 0%, 0% 100%, 100% 50%, 50% 0%, 100% 100%,
+            0% 0%, 25% 75%;
+          transform: rotate(2deg) scale(1.05);
+        }
+        50% {
+          background-position: 100% 100%, 0% 0%, 0% 100%, 100% 50%, 100% 0%,
+            0% 100%, 75% 25%;
+          transform: rotate(0deg) scale(1.1);
+        }
+        75% {
+          background-position: 0% 100%, 100% 0%, 50% 100%, 100% 0%, 0% 0%,
+            100% 100%, 50% 50%;
+          transform: rotate(-2deg) scale(1.05);
+        }
+      }
+
+      .aurora-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            ellipse at top,
+            rgba(102, 126, 234, 0.1) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse at bottom left,
+            rgba(240, 147, 251, 0.1) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse at bottom right,
+            rgba(118, 75, 162, 0.1) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse at center,
+            rgba(255, 182, 193, 0.05) 0%,
+            transparent 70%
+          );
+        animation: aurora-shift 25s ease-in-out infinite;
+      }
+
+      @keyframes aurora-shift {
+        0%,
+        100% {
+          background-position: 0% 0%, 0% 100%, 100% 100%, 50% 50%;
+          opacity: 0.8;
+        }
+        25% {
+          background-position: 100% 0%, 50% 100%, 50% 50%, 25% 75%;
+          opacity: 1;
+        }
+        50% {
+          background-position: 50% 50%, 100% 0%, 0% 50%, 75% 25%;
+          opacity: 0.9;
+        }
+        75% {
+          background-position: 0% 50%, 50% 50%, 100% 0%, 50% 75%;
+          opacity: 1;
+        }
+      }
+
+      .scroll-up-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        animation: bounce-up 2s ease-in-out infinite;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.6),
+          0 0 20px rgba(255, 255, 255, 0.1);
+        opacity: 0;
+        transform: translateY(100px);
+      }
+
+      .scroll-up-btn.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .scroll-up-btn:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.7),
+          0 0 30px rgba(255, 255, 255, 0.2);
+      }
+
+      .scroll-up-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        border-radius: 50%;
+        transition: left 0.5s;
+      }
+
+      .scroll-up-btn:hover::before {
+        left: 100%;
+      }
+
+      @keyframes bounce-up {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Moving Background -->
+    <div class="moving-bg">
+      <div class="wave-bg"></div>
+      <!-- Aurora background -->
+      <div class="aurora-bg"></div>
+      <!-- Geometric patterns -->
+      <div class="geometric-pattern"></div>
+      <!-- Floating shapes -->
+      <div
+        class="floating-shape"
+        style="
+          top: 10%;
+          left: 10%;
+          width: 200px;
+          height: 200px;
+          background: linear-gradient(
+            45deg,
+            rgba(102, 126, 234, 0.3),
+            rgba(118, 75, 162, 0.3)
+          );
+          animation-delay: 0s;
+        "
+      ></div>
+      <div
+        class="floating-shape"
+        style="
+          top: 60%;
+          right: 10%;
+          width: 150px;
+          height: 150px;
+          background: linear-gradient(
+            45deg,
+            rgba(240, 147, 251, 0.3),
+            rgba(102, 126, 234, 0.3)
+          );
+          animation-delay: -5s;
+        "
+      ></div>
+      <div
+        class="floating-shape"
+        style="
+          bottom: 20%;
+          left: 20%;
+          width: 180px;
+          height: 180px;
+          background: linear-gradient(
+            45deg,
+            rgba(118, 75, 162, 0.3),
+            rgba(240, 147, 251, 0.3)
+          );
+          animation-delay: -10s;
+        "
+      ></div>
+      <div
+        class="floating-shape"
+        style="
+          top: 30%;
+          left: 60%;
+          width: 120px;
+          height: 120px;
+          background: linear-gradient(
+            45deg,
+            rgba(102, 126, 234, 0.2),
+            rgba(240, 147, 251, 0.2)
+          );
+          animation-delay: -15s;
+        "
+      ></div>
+      <!-- Additional animated elements -->
+      <div
+        class="floating-shape"
+        style="
+          top: 80%;
+          left: 70%;
+          width: 100px;
+          height: 100px;
+          background: linear-gradient(
+            45deg,
+            rgba(255, 182, 193, 0.2),
+            rgba(102, 126, 234, 0.2)
+          );
+          animation-delay: -20s;
+          border-radius: 30%;
+        "
+      ></div>
+      <div
+        class="floating-shape"
+        style="
+          top: 40%;
+          right: 30%;
+          width: 80px;
+          height: 80px;
+          background: linear-gradient(
+            45deg,
+            rgba(144, 238, 144, 0.2),
+            rgba(240, 147, 251, 0.2)
+          );
+          animation-delay: -25s;
+          border-radius: 20%;
+        "
+      ></div>
+    </div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full glass-nav z-50 shadow-lg">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+          <div class="text-2xl font-bold text-gray-800">AC</div>
+          <div class="hidden md:flex space-x-8">
+            <a href="#home" class="nav-link text-gray-700 hover:text-gray-900"
+              >Home</a
+            >
+            <a href="#about" class="nav-link text-gray-700 hover:text-gray-900"
+              >About</a
+            >
+            <a
+              href="#projects"
+              class="nav-link text-gray-700 hover:text-gray-900"
+              >Projects</a
+            >
+            <a href="#skills" class="nav-link text-gray-700 hover:text-gray-900"
+              >Skills</a
+            >
+            <a
+              href="#contact"
+              class="nav-link text-gray-700 hover:text-gray-900"
+              >Contact</a
+            >
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden glass border-t border-white/20"
+      >
+        <div class="px-4 py-2 space-y-2">
+          <a href="#home" class="block py-2 text-gray-700">Home</a>
+          <a href="#about" class="block py-2 text-gray-700">About</a>
+          <a href="#projects" class="block py-2 text-gray-700">Projects</a>
+          <a href="#skills" class="block py-2 text-gray-700">Skills</a>
+          <a href="#contact" class="block py-2 text-gray-700">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="gradient-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden"
+    >
+      <!-- Floating Particles -->
+      <div class="floating-particles">
+        <div
+          class="particle"
+          style="left: 10%; width: 4px; height: 4px; animation-delay: 0s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 20%; width: 6px; height: 6px; animation-delay: 1s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 30%; width: 3px; height: 3px; animation-delay: 2s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 40%; width: 5px; height: 5px; animation-delay: 0.5s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 50%; width: 4px; height: 4px; animation-delay: 1.5s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 60%; width: 6px; height: 6px; animation-delay: 2.5s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 70%; width: 3px; height: 3px; animation-delay: 3s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 80%; width: 5px; height: 5px; animation-delay: 0.8s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 90%; width: 4px; height: 4px; animation-delay: 1.8s"
+        ></div>
+      </div>
+
+      <!-- Pulse Rings -->
+      <div
+        class="pulse-ring"
+        style="
+          width: 300px;
+          height: 300px;
+          top: 20%;
+          left: 10%;
+          animation-delay: 0s;
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 200px;
+          height: 200px;
+          top: 60%;
+          right: 15%;
+          animation-delay: 1s;
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 150px;
+          height: 150px;
+          bottom: 20%;
+          left: 20%;
+          animation-delay: 2s;
+        "
+      ></div>
+
+      <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+        <div class="fade-in">
+          <h1 class="text-5xl md:text-7xl font-bold mb-6 glitch">
+            Hi, I'm
+            <span class="text-gradient typing-animation">Alex Chen</span>
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 text-gray-200 typewriter">
+            Frontend Developer & UI/UX Enthusiast
+          </p>
+          <p class="text-lg mb-12 text-gray-300 max-w-2xl mx-auto">
+            I create beautiful, responsive web experiences that bring ideas to
+            life. Passionate about clean code, modern design, and user-centered
+            development.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#projects"
+              class="glass-button text-white px-8 py-3 rounded-full font-semibold transition duration-300 neon-glow transform hover:scale-105 shadow-lg"
+            >
+              View My Work
+            </a>
+            <a
+              href="#contact"
+              class="glass-button text-white px-8 py-3 rounded-full font-semibold transition duration-300 transform hover:scale-105 shadow-lg"
+            >
+              Get In Touch
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <div
+          class="w-6 h-10 border-2 border-white rounded-full flex justify-center"
+        >
+          <div class="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+        </div>
+        <p class="text-white text-sm mt-2">Scroll Down</p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white relative overflow-hidden">
+      <!-- Pulse Rings for About Section -->
+      <div
+        class="pulse-ring"
+        style="
+          width: 250px;
+          height: 250px;
+          top: 15%;
+          right: 10%;
+          animation-delay: 0.5s;
+          border-color: rgba(147, 51, 234, 0.2);
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 180px;
+          height: 180px;
+          top: 70%;
+          left: 5%;
+          animation-delay: 1.5s;
+          border-color: rgba(59, 130, 246, 0.2);
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 120px;
+          height: 120px;
+          bottom: 10%;
+          right: 20%;
+          animation-delay: 2.5s;
+          border-color: rgba(236, 72, 153, 0.2);
+        "
+      ></div>
+
+      <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="fade-in text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">About Me</h2>
+          <div class="w-20 h-1 bg-purple-600 mx-auto"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="fade-in relative">
+            <div
+              class="w-80 h-80 mx-auto bg-gradient-to-br from-purple-400 to-blue-500 morphing-blob flex items-center justify-center relative overflow-hidden"
+            >
+              <div class="text-8xl relative z-10">👨‍💻</div>
+              <!-- Floating elements inside blob -->
+              <div
+                class="absolute top-4 left-4 w-3 h-3 bg-white/20 rounded-full animate-ping"
+              ></div>
+              <div
+                class="absolute bottom-6 right-6 w-2 h-2 bg-white/30 rounded-full animate-bounce"
+              ></div>
+              <div
+                class="absolute top-1/2 left-6 w-4 h-4 bg-white/10 rounded-full animate-pulse"
+              ></div>
+            </div>
+            <!-- Orbiting elements -->
+            <div
+              class="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            >
+              <div
+                class="absolute top-0 left-1/2 w-4 h-4 bg-purple-300 rounded-full -translate-x-1/2 animate-spin"
+                style="
+                  animation: orbit 8s linear infinite;
+                  transform-origin: 0 192px;
+                "
+              ></div>
+              <div
+                class="absolute top-0 left-1/2 w-3 h-3 bg-blue-300 rounded-full -translate-x-1/2"
+                style="
+                  animation: orbit 12s linear infinite reverse;
+                  transform-origin: 0 192px;
+                "
+              ></div>
+            </div>
+          </div>
+          <div class="fade-in">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6">
+              Crafting Digital Experiences
+            </h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              With over 4 years of experience in frontend development, I
+              specialize in creating intuitive and engaging web applications. My
+              journey began with a curiosity for how websites work, and it has
+              evolved into a passion for building seamless user experiences.
+            </p>
+            <p class="text-gray-600 mb-8 leading-relaxed">
+              I believe in the power of clean, maintainable code and the
+              importance of accessibility in web development. When I'm not
+              coding, you'll find me exploring new design trends, contributing
+              to open-source projects, or enjoying a good cup of coffee.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm"
+                >Problem Solver</span
+              >
+              <span
+                class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                >Team Player</span
+              >
+              <span
+                class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm"
+                >Continuous Learner</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50 relative overflow-hidden">
+      <!-- Pulse Rings for Projects Section -->
+      <div
+        class="pulse-ring"
+        style="
+          width: 300px;
+          height: 300px;
+          top: 10%;
+          left: 8%;
+          animation-delay: 1s;
+          border-color: rgba(34, 197, 94, 0.2);
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 200px;
+          height: 200px;
+          top: 60%;
+          right: 12%;
+          animation-delay: 2s;
+          border-color: rgba(249, 115, 22, 0.2);
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 160px;
+          height: 160px;
+          bottom: 15%;
+          left: 15%;
+          animation-delay: 0.8s;
+          border-color: rgba(168, 85, 247, 0.2);
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 140px;
+          height: 140px;
+          top: 40%;
+          left: 60%;
+          animation-delay: 1.8s;
+          border-color: rgba(14, 165, 233, 0.2);
+        "
+      ></div>
+
+      <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="fade-in text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">
+            Featured Projects
+          </h2>
+          <div class="w-20 h-1 bg-purple-600 mx-auto mb-6"></div>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Here are some of my recent projects that showcase my skills and
+            passion for frontend development.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <div
+            class="fade-in card-hover tilt-card glass-card rounded-xl overflow-hidden"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-pink-400 to-red-500 flex items-center justify-center relative overflow-hidden"
+            >
+              <div
+                class="text-6xl relative z-10 transform transition-transform duration-300"
+              >
+                🛍️
+              </div>
+              <!-- Animated background elements -->
+              <div
+                class="absolute top-2 right-2 w-8 h-8 bg-white/10 rounded-full animate-pulse"
+              ></div>
+              <div
+                class="absolute bottom-4 left-4 w-6 h-6 bg-white/20 rounded-full animate-bounce"
+              ></div>
+              <div
+                class="absolute top-1/2 left-2 w-4 h-4 bg-white/15 rounded-full animate-ping"
+              ></div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                E-Commerce Platform
+              </h3>
+              <p class="text-gray-600 mb-4">
+                A modern e-commerce solution built with React and Node.js,
+                featuring real-time inventory management and secure payment
+                processing.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >React</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded"
+                  >Node.js</span
+                >
+                <span
+                  class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded"
+                  >MongoDB</span
+                >
+              </div>
+              <div class="flex gap-3">
+                <button
+                  class="text-purple-600 hover:text-purple-800 font-medium"
+                >
+                  Live Demo
+                </button>
+                <button class="text-gray-600 hover:text-gray-800 font-medium">
+                  View Code
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="fade-in card-hover tilt-card glass-card rounded-xl overflow-hidden"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center relative overflow-hidden"
+            >
+              <div
+                class="text-6xl relative z-10 transform transition-transform duration-300"
+              >
+                📱
+              </div>
+              <!-- Animated background elements -->
+              <div
+                class="absolute top-4 left-4 w-6 h-6 bg-white/15 rounded-full animate-ping"
+              ></div>
+              <div
+                class="absolute bottom-2 right-2 w-10 h-10 bg-white/10 rounded-full animate-pulse"
+              ></div>
+              <div
+                class="absolute top-1/2 right-4 w-3 h-3 bg-white/25 rounded-full animate-bounce"
+              ></div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                Task Management App
+              </h3>
+              <p class="text-gray-600 mb-4">
+                A collaborative task management application with drag-and-drop
+                functionality, real-time updates, and team collaboration
+                features.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >Vue.js</span
+                >
+                <span
+                  class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded"
+                  >Firebase</span
+                >
+                <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded"
+                  >Tailwind</span
+                >
+              </div>
+              <div class="flex gap-3">
+                <button
+                  class="text-purple-600 hover:text-purple-800 font-medium"
+                >
+                  Live Demo
+                </button>
+                <button class="text-gray-600 hover:text-gray-800 font-medium">
+                  View Code
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div
+            class="fade-in card-hover tilt-card glass-card rounded-xl overflow-hidden"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center relative overflow-hidden"
+            >
+              <div
+                class="text-6xl relative z-10 transform transition-transform duration-300"
+              >
+                📊
+              </div>
+              <!-- Animated background elements -->
+              <div
+                class="absolute top-6 right-6 w-5 h-5 bg-white/20 rounded-full animate-bounce"
+              ></div>
+              <div
+                class="absolute bottom-6 left-6 w-7 h-7 bg-white/10 rounded-full animate-pulse"
+              ></div>
+              <div
+                class="absolute top-2 left-1/2 w-4 h-4 bg-white/15 rounded-full animate-ping"
+              ></div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                Analytics Dashboard
+              </h3>
+              <p class="text-gray-600 mb-4">
+                An interactive analytics dashboard with real-time data
+                visualization, custom charts, and comprehensive reporting
+                features.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                  >React</span
+                >
+                <span
+                  class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded"
+                  >D3.js</span
+                >
+                <span
+                  class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded"
+                  >Express</span
+                >
+              </div>
+              <div class="flex gap-3">
+                <button
+                  class="text-purple-600 hover:text-purple-800 font-medium"
+                >
+                  Live Demo
+                </button>
+                <button class="text-gray-600 hover:text-gray-800 font-medium">
+                  View Code
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white relative overflow-hidden">
+      <!-- Pulse Rings for Skills Section -->
+      <div
+        class="pulse-ring"
+        style="
+          width: 280px;
+          height: 280px;
+          top: 20%;
+          right: 5%;
+          animation-delay: 0.3s;
+          border-color: rgba(245, 158, 11, 0.2);
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 220px;
+          height: 220px;
+          bottom: 20%;
+          left: 10%;
+          animation-delay: 1.3s;
+          border-color: rgba(16, 185, 129, 0.2);
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 150px;
+          height: 150px;
+          top: 50%;
+          left: 70%;
+          animation-delay: 2.3s;
+          border-color: rgba(239, 68, 68, 0.2);
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 190px;
+          height: 190px;
+          top: 10%;
+          left: 30%;
+          animation-delay: 1.8s;
+          border-color: rgba(99, 102, 241, 0.2);
+        "
+      ></div>
+
+      <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="fade-in text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">
+            Skills & Technologies
+          </h2>
+          <div class="w-20 h-1 bg-purple-600 mx-auto mb-6"></div>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            I'm constantly learning and expanding my skill set to stay current
+            with the latest technologies and best practices.
+          </p>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="fade-in">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <!-- Row 1 -->
+            <!-- JavaScript/TypeScript Card -->
+            <div
+              class="glass-card rounded-xl p-6 text-center card-hover relative overflow-hidden"
+            >
+              <div class="skill-icon-container mb-4 relative">
+                <div
+                  class="w-16 h-16 mx-auto glass-icon rounded-full flex items-center justify-center relative overflow-hidden"
+                >
+                  <svg
+                    class="w-8 h-8 text-yellow-500"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 3h18v18H3V3zm16.525 13.707c-.131-.821-.666-1.511-2.252-2.155-.552-.259-1.165-.438-1.349-.854-.068-.248-.078-.382-.034-.529.113-.484.687-.629 1.137-.495.293.09.563.315.732.676.775-.507.775-.507 1.316-.844-.203-.314-.304-.451-.439-.586-.473-.528-1.103-.798-2.126-.77l-.528.067c-.507.124-.991.395-1.283.754-.855.968-.608 2.655.427 3.354 1.023.765 2.521.933 2.712 1.653.18.878-.652 1.159-1.475 1.058-.607-.136-.945-.439-1.316-.998l-1.372.788c.157.359.337.517.607.832 1.305 1.316 4.568 1.249 5.153-.754.021-.067.18-.528.056-1.237l.034.049zm-6.737-5.434h-1.686c0 1.453-.007 2.898-.007 4.354 0 .924.047 1.772-.104 2.033-.247.517-.886.451-1.175.359-.297-.146-.448-.349-.623-.641-.047-.078-.082-.146-.095-.146l-1.368.844c.229.473.563.879.994 1.137.641.383 1.502.507 2.404.305.588-.17 1.095-.519 1.358-1.059.384-.697.302-1.553.299-2.509.008-1.541 0-3.083 0-4.635l.003-.042z"
+                    />
+                  </svg>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-orange-400/20 rounded-full"
+                  ></div>
+                </div>
+                <div
+                  class="skill-percentage absolute -bottom-1 left-1/2 transform -translate-x-1/2"
+                >
+                  <div
+                    class="bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
+                  >
+                    95%
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">JavaScript</h3>
+            </div>
+
+            <!-- React Card -->
+            <div
+              class="glass-card rounded-xl p-6 text-center card-hover relative overflow-hidden"
+            >
+              <div class="skill-icon-container mb-4 relative">
+                <div
+                  class="w-16 h-16 mx-auto glass-icon rounded-full flex items-center justify-center relative overflow-hidden"
+                >
+                  <svg
+                    class="w-8 h-8 text-blue-500"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="12" cy="12" r="2" />
+                    <path
+                      d="M12 1c-4.2 0-8 1.2-8 3.2v15.6c0 2 3.8 3.2 8 3.2s8-1.2 8-3.2V4.2c0-2-3.8-3.2-8-3.2z"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1"
+                    />
+                    <ellipse
+                      cx="12"
+                      cy="12"
+                      rx="11"
+                      ry="4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1"
+                    />
+                    <ellipse
+                      cx="12"
+                      cy="12"
+                      rx="11"
+                      ry="4"
+                      transform="rotate(60 12 12)"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1"
+                    />
+                    <ellipse
+                      cx="12"
+                      cy="12"
+                      rx="11"
+                      ry="4"
+                      transform="rotate(120 12 12)"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1"
+                    />
+                  </svg>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full"
+                  ></div>
+                </div>
+                <div
+                  class="skill-percentage absolute -bottom-1 left-1/2 transform -translate-x-1/2"
+                >
+                  <div
+                    class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
+                  >
+                    90%
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">React</h3>
+            </div>
+
+            <!-- Vue.js Card -->
+            <div
+              class="glass-card rounded-xl p-6 text-center card-hover relative overflow-hidden"
+            >
+              <div class="skill-icon-container mb-4 relative">
+                <div
+                  class="w-16 h-16 mx-auto glass-icon rounded-full flex items-center justify-center relative overflow-hidden"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-500"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2L2 20h20L12 2zm0 3.84L18.16 18H5.84L12 5.84z"
+                    />
+                  </svg>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-green-400/20 to-emerald-400/20 rounded-full"
+                  ></div>
+                </div>
+                <div
+                  class="skill-percentage absolute -bottom-1 left-1/2 transform -translate-x-1/2"
+                >
+                  <div
+                    class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
+                  >
+                    85%
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">Vue.js</h3>
+            </div>
+
+            <!-- CSS Card -->
+            <div
+              class="glass-card rounded-xl p-6 text-center card-hover relative overflow-hidden"
+            >
+              <div class="skill-icon-container mb-4 relative">
+                <div
+                  class="w-16 h-16 mx-auto glass-icon rounded-full flex items-center justify-center relative overflow-hidden"
+                >
+                  <svg
+                    class="w-8 h-8 text-pink-500"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.413l.213 2.622h10.125l-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"
+                    />
+                  </svg>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-pink-400/20 to-rose-400/20 rounded-full"
+                  ></div>
+                </div>
+                <div
+                  class="skill-percentage absolute -bottom-1 left-1/2 transform -translate-x-1/2"
+                >
+                  <div
+                    class="bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
+                  >
+                    92%
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">CSS/Tailwind</h3>
+            </div>
+
+            <!-- Row 2 -->
+            <!-- Git Card -->
+            <div
+              class="glass-card rounded-xl p-6 text-center card-hover relative overflow-hidden"
+            >
+              <div class="skill-icon-container mb-4 relative">
+                <div
+                  class="w-16 h-16 mx-auto glass-icon rounded-full flex items-center justify-center relative overflow-hidden"
+                >
+                  <svg
+                    class="w-8 h-8 text-orange-500"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"
+                    />
+                  </svg>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full"
+                  ></div>
+                </div>
+                <div
+                  class="skill-percentage absolute -bottom-1 left-1/2 transform -translate-x-1/2"
+                >
+                  <div
+                    class="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
+                  >
+                    88%
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">Git/GitHub</h3>
+            </div>
+
+            <!-- Node.js Card -->
+            <div
+              class="glass-card rounded-xl p-6 text-center card-hover relative overflow-hidden"
+            >
+              <div class="skill-icon-container mb-4 relative">
+                <div
+                  class="w-16 h-16 mx-auto glass-icon rounded-full flex items-center justify-center relative overflow-hidden"
+                >
+                  <svg
+                    class="w-8 h-8 text-green-600"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L2.46,6.68C2.376,6.729,2.322,6.825,2.322,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.570,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z"
+                    />
+                  </svg>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-full"
+                  ></div>
+                </div>
+                <div
+                  class="skill-percentage absolute -bottom-1 left-1/2 transform -translate-x-1/2"
+                >
+                  <div
+                    class="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
+                  >
+                    75%
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">Node.js</h3>
+            </div>
+
+            <!-- UI/UX Design Card -->
+            <div
+              class="glass-card rounded-xl p-6 text-center card-hover relative overflow-hidden"
+            >
+              <div class="skill-icon-container mb-4 relative">
+                <div
+                  class="w-16 h-16 mx-auto glass-icon rounded-full flex items-center justify-center relative overflow-hidden"
+                >
+                  <svg
+                    class="w-8 h-8 text-indigo-500"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                    />
+                  </svg>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-full"
+                  ></div>
+                </div>
+                <div
+                  class="skill-percentage absolute -bottom-1 left-1/2 transform -translate-x-1/2"
+                >
+                  <div
+                    class="bg-indigo-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
+                  >
+                    82%
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">UI/UX Design</h3>
+            </div>
+
+            <!-- TypeScript Card -->
+            <div
+              class="glass-card rounded-xl p-6 text-center card-hover relative overflow-hidden"
+            >
+              <div class="skill-icon-container mb-4 relative">
+                <div
+                  class="w-16 h-16 mx-auto glass-icon rounded-full flex items-center justify-center relative overflow-hidden"
+                >
+                  <svg
+                    class="w-8 h-8 text-blue-600"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"
+                    />
+                  </svg>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-700/20 rounded-full"
+                  ></div>
+                </div>
+                <div
+                  class="skill-percentage absolute -bottom-1 left-1/2 transform -translate-x-1/2"
+                >
+                  <div
+                    class="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
+                  >
+                    87%
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">TypeScript</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 relative overflow-hidden">
+      <!-- Pulse Rings for Contact Section -->
+      <div
+        class="pulse-ring"
+        style="
+          width: 320px;
+          height: 320px;
+          top: 15%;
+          left: 5%;
+          animation-delay: 0.5s;
+          border-color: rgba(139, 69, 19, 0.25);
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 240px;
+          height: 240px;
+          bottom: 20%;
+          right: 8%;
+          animation-delay: 1.5s;
+          border-color: rgba(219, 39, 119, 0.25);
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 180px;
+          height: 180px;
+          top: 10%;
+          right: 15%;
+          animation-delay: 2.2s;
+          border-color: rgba(6, 182, 212, 0.25);
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 280px;
+          height: 280px;
+          bottom: 5%;
+          left: 35%;
+          animation-delay: 1.8s;
+          border-color: rgba(124, 58, 237, 0.25);
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 160px;
+          height: 160px;
+          top: 60%;
+          left: 15%;
+          animation-delay: 0.8s;
+          border-color: rgba(34, 197, 94, 0.25);
+        "
+      ></div>
+      <div
+        class="pulse-ring"
+        style="
+          width: 200px;
+          height: 200px;
+          top: 40%;
+          right: 5%;
+          animation-delay: 2.8s;
+          border-color: rgba(249, 115, 22, 0.25);
+        "
+      ></div>
+
+      <div class="max-w-4xl mx-auto px-4 relative z-10">
+        <div class="fade-in text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">
+            Let's Work Together
+          </h2>
+          <div class="w-20 h-1 bg-purple-600 mx-auto mb-6"></div>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            I'm always interested in new opportunities and exciting projects.
+            Let's discuss how we can bring your ideas to life!
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="fade-in">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6">
+              Get In Touch
+            </h3>
+            <div class="space-y-4">
+              <div
+                class="glass-contact-card p-6 rounded-xl flex items-center hover:scale-105 transition-all duration-300"
+              >
+                <div
+                  class="w-14 h-14 glass-icon rounded-full flex items-center justify-center mr-6 relative overflow-hidden"
+                >
+                  <span class="text-purple-600 text-2xl relative z-10">📧</span>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full"
+                  ></div>
+                </div>
+                <div>
+                  <p class="text-gray-600 text-sm font-medium">Email</p>
+                  <p class="text-gray-800 font-semibold text-lg">
+                    alex.chen@email.com
+                  </p>
+                </div>
+              </div>
+              <div
+                class="glass-contact-card p-6 rounded-xl flex items-center hover:scale-105 transition-all duration-300"
+              >
+                <div
+                  class="w-14 h-14 glass-icon rounded-full flex items-center justify-center mr-6 relative overflow-hidden"
+                >
+                  <span class="text-blue-600 text-2xl relative z-10">💼</span>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full"
+                  ></div>
+                </div>
+                <div>
+                  <p class="text-gray-600 text-sm font-medium">LinkedIn</p>
+                  <p class="text-gray-800 font-semibold text-lg">
+                    linkedin.com/in/alexchen
+                  </p>
+                </div>
+              </div>
+              <div
+                class="glass-contact-card p-6 rounded-xl flex items-center hover:scale-105 transition-all duration-300"
+              >
+                <div
+                  class="w-14 h-14 glass-icon rounded-full flex items-center justify-center mr-6 relative overflow-hidden"
+                >
+                  <span class="text-gray-700 text-2xl relative z-10">🐙</span>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-gray-400/20 to-slate-400/20 rounded-full"
+                  ></div>
+                </div>
+                <div>
+                  <p class="text-gray-600 text-sm font-medium">GitHub</p>
+                  <p class="text-gray-800 font-semibold text-lg">
+                    github.com/alexchen
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in">
+            <form
+              class="space-y-8 glass-contact-form p-8 rounded-2xl relative overflow-hidden"
+              id="contact-form"
+            >
+              <div class="google-field-container relative">
+                <input
+                  type="text"
+                  class="google-field w-full px-0 py-3 pb-3 bg-transparent border-0 border-b-2 border-gray-300 focus:border-purple-600 focus:outline-none text-gray-800 placeholder-transparent peer"
+                  placeholder="Your Name"
+                  id="name"
+                  required
+                />
+                <label
+                  for="name"
+                  class="google-label absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-purple-600 peer-focus:text-sm"
+                  >Name</label
+                >
+              </div>
+              <div class="google-field-container relative">
+                <input
+                  type="email"
+                  class="google-field w-full px-0 py-3 pb-3 bg-transparent border-0 border-b-2 border-gray-300 focus:border-purple-600 focus:outline-none text-gray-800 placeholder-transparent peer"
+                  placeholder="your@email.com"
+                  id="email"
+                  required
+                />
+                <label
+                  for="email"
+                  class="google-label absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-purple-600 peer-focus:text-sm"
+                  >Email</label
+                >
+              </div>
+              <div class="google-field-container relative">
+                <textarea
+                  rows="4"
+                  class="google-field w-full px-0 py-3 pb-3 bg-transparent border-0 border-b-2 border-gray-300 focus:border-purple-600 focus:outline-none text-gray-800 placeholder-transparent peer resize-none"
+                  placeholder="Tell me about your project..."
+                  id="message"
+                  required
+                ></textarea>
+                <label
+                  for="message"
+                  class="google-label absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-purple-600 peer-focus:text-sm"
+                  >Message</label
+                >
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scroll Up Button -->
+    <button class="scroll-up-btn" id="scrollUpBtn" title="Scroll to top">
+      <svg
+        class="w-6 h-6 text-gray-700"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 15l7-7 7 7"
+        ></path>
+      </svg>
+    </button>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold mb-4">Alex Chen</h3>
+          <p class="text-gray-400 mb-6">
+            Frontend Developer & UI/UX Enthusiast
+          </p>
+          <div class="flex justify-center space-x-6">
+            <button
+              class="text-gray-400 hover:text-white transition duration-300"
+            >
+              <span class="text-2xl">💼</span>
+            </button>
+            <button
+              class="text-gray-400 hover:text-white transition duration-300"
+            >
+              <span class="text-2xl">🐙</span>
+            </button>
+            <button
+              class="text-gray-400 hover:text-white transition duration-300"
+            >
+              <span class="text-2xl">🐦</span>
+            </button>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 pt-8">
+          <p class="text-gray-400">
+            © 2024 Alex Chen. All rights reserved. Built with passion and lots
+            of coffee ☕
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            // Close mobile menu if open
+            mobileMenu.classList.add("hidden");
+          }
+        });
+      });
+
+      // Fade in animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Contact form submission
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Create custom modal for form submission
+          const modal = document.createElement("div");
+          modal.className =
+            "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+          modal.innerHTML = `
+                <div class="bg-white p-8 rounded-lg max-w-md mx-4 text-center">
+                    <div class="text-6xl mb-4">✅</div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Message Sent!</h3>
+                    <p class="text-gray-600 mb-6">Thank you for reaching out! I'll get back to you within 24 hours.</p>
+                    <button onclick="this.parentElement.parentElement.remove()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition duration-300">
+                        Close
+                    </button>
+                </div>
+            `;
+          document.body.appendChild(modal);
+
+          // Reset form
+          this.reset();
+        });
+
+      // Typing animation for hero text
+      const typingText = document.querySelector(".typing-animation");
+      if (typingText) {
+        const text = "Alex Chen";
+        let index = 0;
+
+        function typeWriter() {
+          if (index < text.length) {
+            typingText.textContent = text.slice(0, index + 1);
+            index++;
+            setTimeout(typeWriter, 150);
+          }
+        }
+
+        // Start typing animation after a delay
+        setTimeout(() => {
+          typingText.textContent = "";
+          typeWriter();
+        }, 1000);
+      }
+
+      // 3D Tilt Effect for Cards
+      document.querySelectorAll(".tilt-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = (y - centerY) / 10;
+          const rotateY = (centerX - x) / 10;
+
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+
+          // Animate emoji inside
+          const emoji = card.querySelector(".text-6xl");
+          if (emoji) {
+            emoji.style.transform = `translateZ(50px) rotateY(${
+              rotateY * 0.5
+            }deg)`;
+          }
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform =
+            "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+          const emoji = card.querySelector(".text-6xl");
+          if (emoji) {
+            emoji.style.transform = "translateZ(0px) rotateY(0deg)";
+          }
+        });
+      });
+
+      // Minimal parallax scrolling effect (fixed overlap issues)
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+
+        // Only apply very subtle parallax to hero section elements
+        const pulseRings = document.querySelectorAll(".pulse-ring");
+        pulseRings.forEach((ring, index) => {
+          const speed = 0.1 + index * 0.02; // Much slower speeds
+          ring.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+
+        // Subtle parallax for morphing blob only
+        const morphingBlob = document.querySelector(".morphing-blob");
+        if (morphingBlob) {
+          const aboutSection = document.getElementById("about");
+          const rect = aboutSection.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+          if (isVisible && rect.top < 0) {
+            const parallaxSpeed = Math.abs(rect.top) * 0.02; // Very subtle
+            morphingBlob.style.transform = `translateY(${parallaxSpeed}px)`;
+          }
+        }
+      });
+
+      // Add orbit animation keyframes
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes orbit {
+                from { transform: rotate(0deg) translateX(192px) rotate(0deg); }
+                to { transform: rotate(360deg) translateX(192px) rotate(-360deg); }
+            }
+        `;
+      document.head.appendChild(style);
+
+      // Add floating animation to particles
+      function createFloatingParticles() {
+        const container = document.querySelector(".floating-particles");
+        if (!container) return;
+
+        setInterval(() => {
+          if (container.children.length < 15) {
+            const particle = document.createElement("div");
+            particle.className = "particle";
+            particle.style.left = Math.random() * 100 + "%";
+            particle.style.width = Math.random() * 4 + 2 + "px";
+            particle.style.height = particle.style.width;
+            particle.style.animationDelay = Math.random() * 3 + "s";
+            particle.style.animationDuration = Math.random() * 3 + 4 + "s";
+
+            container.appendChild(particle);
+
+            setTimeout(() => {
+              if (particle.parentNode) {
+                particle.parentNode.removeChild(particle);
+              }
+            }, 8000);
+          }
+        }, 2000);
+      }
+
+      createFloatingParticles();
+
+      // Scroll up button functionality
+      const scrollUpBtn = document.getElementById("scrollUpBtn");
+
+      // Show/hide scroll up button
+      window.addEventListener("scroll", () => {
+        const scrollPercent =
+          window.pageYOffset /
+          (document.documentElement.scrollHeight - window.innerHeight);
+        const movingBg = document.querySelector(".moving-bg");
+
+        // Show scroll up button after scrolling 300px
+        if (window.pageYOffset > 300) {
+          scrollUpBtn.classList.add("visible");
+        } else {
+          scrollUpBtn.classList.remove("visible");
+        }
+
+        if (movingBg) {
+          const hue1 = 240 + scrollPercent * 60; // Blue to purple range
+          const hue2 = 280 + scrollPercent * 40; // Purple to pink range
+
+          movingBg.style.filter = `hue-rotate(${
+            scrollPercent * 30
+          }deg) brightness(${1 + scrollPercent * 0.2})`;
+        }
+
+        // Update floating shapes colors based on scroll
+        const floatingShapes = document.querySelectorAll(".floating-shape");
+        floatingShapes.forEach((shape, index) => {
+          const hueShift = scrollPercent * 60 + index * 20;
+          shape.style.filter = `hue-rotate(${hueShift}deg) brightness(${
+            1.2 + Math.sin(scrollPercent * Math.PI) * 0.3
+          })`;
+        });
+      });
+
+      // Scroll to top functionality
+      scrollUpBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'96c8c353938cb2c9',t:'MTc1NDc1ODMzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

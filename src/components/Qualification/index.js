@@ -1,9 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import "./index.scss";
 
 const Qualification = ({ data }) => {
   const [qualificationType, setQualificationType] = useState("WORK");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    // Observe all qualification__data elements
+    const qualificationItems = document.querySelectorAll('.qualification__data');
+    qualificationItems.forEach((item) => {
+      observer.observe(item);
+    });
+
+    return () => {
+      qualificationItems.forEach((item) => {
+        observer.unobserve(item);
+      });
+    };
+  }, [qualificationType]);
 
   return (
     <section className="qualification section" id="qualification">
@@ -13,7 +40,7 @@ const Qualification = ({ data }) => {
       <div className="qualification__container container grid">
         <div className="qualification__tabs">
           <div
-            className={classnames("qualification__button button--flex", {
+            className={classnames("qualification__button button--flex timeline-bounce-in", {
               qualification__active: qualificationType === "WORK",
             })}
             onClick={() => setQualificationType("WORK")}
@@ -22,7 +49,7 @@ const Qualification = ({ data }) => {
             Work
           </div>
           <div
-            className={classnames("qualification__button button--flex", {
+            className={classnames("qualification__button button--flex timeline-bounce-in", {
               qualification__active: qualificationType === "EDUCATION",
             })}
             onClick={() => setQualificationType("EDUCATION")}
@@ -41,12 +68,12 @@ const Qualification = ({ data }) => {
                     <>
                       <div></div>
                       <div>
-                        <span className="qualification__rounder"></span>
-                        <span className="qualification__line"></span>
+                        <span className="qualification__rounder timeline-pulse-dot timeline-bounce-in"></span>
+                        <span className="qualification__line timeline-draw-line"></span>
                       </div>
                     </>
                   )}
-                  <div>
+                  <div className={index % 2 === 0 ? "timeline-slide-left" : "timeline-slide-right"}>
                     <h3 className="qualification__title">{item.role}</h3>
                     <span className="qualification__subtitle">
                       {item.companyName}
@@ -55,27 +82,12 @@ const Qualification = ({ data }) => {
                       <i className="uil uil-calendar-alt"></i>
                       {item.duration}
                     </div>
-                    <div className="qualification__keypoints-container">
-                      {item.keyPoints.map((keyPoint, keyPointIndex) => (
-                        <div
-                          className="qualification__keypoint-content"
-                          key={keyPointIndex}
-                        >
-                          <div className="qualification__keypoint-dot">
-                            <span></span>
-                          </div>
-                          <span className="qualification__keypoint-line">
-                            {keyPoint}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
                   </div>
                   {index % 2 === 0 && (
                     <div>
-                      <span className="qualification__rounder"></span>
+                      <span className="qualification__rounder timeline-pulse-dot timeline-bounce-in"></span>
                       {index !== data?.workHistory.length - 1 && (
-                        <span className="qualification__line"></span>
+                        <span className="qualification__line timeline-draw-line"></span>
                       )}
                     </div>
                   )}
@@ -91,14 +103,14 @@ const Qualification = ({ data }) => {
                     <>
                       <div></div>
                       <div>
-                        <span className="qualification__rounder"></span>
+                        <span className="qualification__rounder timeline-pulse-dot timeline-bounce-in"></span>
                         {index !== data?.education.length - 1 && (
-                          <span className="qualification__line"></span>
+                          <span className="qualification__line timeline-draw-line"></span>
                         )}
                       </div>
                     </>
                   )}
-                  <div>
+                  <div className={index % 2 === 0 ? "timeline-slide-left" : "timeline-slide-right"}>
                     <h3 className="qualification__title">{item.degree}</h3>
                     <span className="qualification__subtitle">
                       {item.collage}
@@ -110,8 +122,8 @@ const Qualification = ({ data }) => {
                   </div>
                   {index % 2 === 0 && (
                     <div>
-                      <span className="qualification__rounder"></span>
-                      <span className="qualification__line"></span>
+                      <span className="qualification__rounder timeline-pulse-dot timeline-bounce-in"></span>
+                      <span className="qualification__line timeline-draw-line"></span>
                     </div>
                   )}
                 </div>

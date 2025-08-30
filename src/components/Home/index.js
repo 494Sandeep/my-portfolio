@@ -62,9 +62,9 @@ const Home = ({ data }) => {
         <div className="home__scroll">
           <div className="home__scroll-indicator">
             <span className="home__scroll-text">Scroll Down</span>
-            <div className="home__scroll-icon">
+            <a className="home__scroll-icon" href="#about">
               <i className="uil uil-angle-down"></i>
-            </div>
+            </a>
           </div>
         </div>
       </div>

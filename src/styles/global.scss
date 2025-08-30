@@ -38,7 +38,7 @@ body {
 
   /* Change favorite color */
 
-  --hue-color: 261;
+  --hue-color: 350;
   /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
   /* HSL color mode */
   --first-color: hsl(var(--hue-color), 69%, 61%);
@@ -86,7 +86,7 @@ body {
   --z-fixed: 100;
   --z-modal: 1000;
 
-  --linear-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --linear-gradient: linear-gradient(210deg, rgba(129, 187, 184, 1.000) 0.000%, rgba(141, 181, 184, 1.000) 7.143%, rgba(153, 175, 183, 1.000) 14.286%, rgba(165, 168, 181, 1.000) 21.429%, rgba(178, 161, 179, 1.000) 28.571%, rgba(189, 152, 175, 1.000) 35.714%, rgba(200, 144, 171, 1.000) 42.857%, rgba(209, 135, 166, 1.000) 50.000%, rgba(217, 126, 161, 1.000) 57.143%, rgba(223, 117, 155, 1.000) 64.286%, rgba(226, 108, 148, 1.000) 71.429%, rgba(228, 99, 141, 1.000) 78.571%, rgba(227, 90, 133, 1.000) 85.714%, rgba(223, 83, 125, 1.000) 92.857%, rgba(218, 75, 116, 1.000) 100.000%);
 }
 
 /* Font size for large devices */
@@ -414,6 +414,192 @@ img {
       0 0 200px rgba(102, 126, 234, 0.3),
       inset 0 0 70px rgba(255, 255, 255, 0.15);
     opacity: 0.8;
+  }
+}
+
+.fadeUp{
+  animation: fadeUp both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 40%;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Individual timeline item animations */
+.qualification__data {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.qualification__data.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Contact card animations */
+.contact__information {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.contact__information.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.contact__information:nth-child(1).in-view { transition-delay: 0.1s; }
+.contact__information:nth-child(2).in-view { transition-delay: 0.2s; }
+.contact__information:nth-child(3).in-view { transition-delay: 0.3s; }
+.contact__information:nth-child(4).in-view { transition-delay: 0.4s; }
+
+.timeline-slide-left {
+  opacity: 0;
+  transform: translateX(-50px) scale(0.9);
+  animation: slideInLeft 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+  text-align: right;
+}
+
+.timeline-slide-right {
+  opacity: 0;
+  transform: translateX(50px) scale(0.9);
+  animation: slideInRight 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+.timeline-draw-line {
+  transform-origin: top;
+  transform: scaleY(0);
+  animation: drawLineScale 1.2s ease-out forwards;
+  animation-delay: 0.4s;
+}
+
+.timeline-pulse-dot {
+  animation: pulseDot 3s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.timeline-bounce-in {
+  opacity: 0;
+  transform: scale(0.5) translateY(-20px);
+  animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes drawLine {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes drawLineScale {
+  from {
+    transform: scaleY(0) translate(6px, -7px);
+    opacity: 0.5;
+  }
+  to {
+    transform: scaleY(1) translate(6px, -7px);;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes qualificationSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes qualificationFallback {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(-30px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-10px);
+  }
+  70% {
+    transform: scale(0.9) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
 

@@ -30,8 +30,8 @@
     }
 
     svg path {
-      fill: #7343cb;
-      stroke: #7343cb;
+      fill: black;
+      stroke: black;
       stroke-width: 0.1;
       stroke-dasharray: 60;
     }
@@ -51,6 +51,7 @@
       transition: all 0.3s ease;
       padding: 8px 16px;
       border-radius: 8px;
+      color: black;
       overflow: hidden;
 
       &::after {

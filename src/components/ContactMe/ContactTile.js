@@ -6,7 +6,7 @@ export const ContactTile = ({ data }) => {
     <div className="pulse-ring decoration-circle__1"></div>
     <div className="pulse-ring decoration-circle__2"></div>
     {data.map((item, index) => (
-      <div className="contact__information glass-contact-card" key={index}>
+      <div className="contact__information glass-contact-card fadeUp" key={index}>
         <i className={`uil ${item.icon} contact__icon`}></i>
         <div>
           <h3 className="contact__title">{item.text}</h3>
